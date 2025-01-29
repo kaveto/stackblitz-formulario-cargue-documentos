@@ -503,7 +503,7 @@ const surveyJson = {
   
   function alertResults(sender) {
     const results = JSON.stringify(sender.data);
-    alert(results);
+    //alert(results);
     console.log(sender.data);
   }
   
