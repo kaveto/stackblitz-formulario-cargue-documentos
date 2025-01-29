@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home</title>
+    <title>My First Survey</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <!--
@@ -9,15 +9,24 @@
       Remove all code in `styles.css`!
     -->
     <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://unpkg.com/survey-core/defaultV2.min.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+
     <script type="module" src="script.js"></script>
+    <!-- ... -->
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/survey-core/survey.core.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/survey-js-ui/survey-js-ui.min.js"
+    ></script>
   </head>
   <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
+    <div id="surveyContainer"></div>
   </body>
 </html>
