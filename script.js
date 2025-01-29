@@ -483,7 +483,6 @@ const surveyJson = {
   "showProgressBar": "aboveheader",
   "progressBarShowPageTitles": true,
   "progressBarShowPageNumbers": true,
-  "showTOC": true,
   "tocLocation": "right",
   "storeOthersAsComment": false,
   "clearInvisibleValues": "none",
