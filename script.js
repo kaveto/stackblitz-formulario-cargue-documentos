@@ -168,6 +168,7 @@ const surveyJson = {
             "es": "Pasaporte"
           },
           "isRequired": true,
+          "acceptedTypes": ".jpg,.pdf,.png",
           "waitForUpload": true,
           "sourceType": "file-camera"
         },
@@ -178,6 +179,7 @@ const surveyJson = {
             "es": "Documento de identidad de país origen"
           },
           "isRequired": true,
+          "acceptedTypes": ".jpg,.pdf,.png",
           "waitForUpload": true,
           "sourceType": "file-camera"
         },
@@ -191,6 +193,7 @@ const surveyJson = {
             "es": "Debe subir una foto tipo carnet fondo blanco o azul, de hombros hacia arriba."
           },
           "isRequired": true,
+          "acceptedTypes": ".jpg,.pdf,.png",
           "waitForUpload": true,
           "sourceType": "file-camera"
         },
@@ -204,6 +207,7 @@ const surveyJson = {
             "es": "Se requiere una imagen donde se pueda visualizar la dirección de vivienda actual."
           },
           "isRequired": true,
+          "acceptedTypes": ".jpg,.pdf,.png",
           "waitForUpload": true,
           "sourceType": "file-camera"
         }
@@ -228,6 +232,7 @@ const surveyJson = {
             "es": "Visa con la que ingresó a EE.UU."
           },
           "isRequired": true,
+          "acceptedTypes": ".jpg,.pdf,.png",
           "waitForUpload": true,
           "sourceType": "file-camera"
         },
@@ -239,6 +244,7 @@ const surveyJson = {
             "es": "Documentos recibidos en frontera"
           },
           "isRequired": true,
+          "acceptedTypes": ".jpg,.pdf,.png",
           "waitForUpload": true,
           "sourceType": "file-camera"
         },
@@ -250,6 +256,7 @@ const surveyJson = {
             "es": "Acta de Nacimiento"
           },
           "isRequired": true,
+          "acceptedTypes": ".jpg,.pdf,.png",
           "waitForUpload": true,
           "sourceType": "file-camera"
         },
@@ -261,6 +268,7 @@ const surveyJson = {
             "es": "Acta de matrimonio"
           },
           "isRequired": true,
+          "acceptedTypes": ".jpg,.pdf,.png",
           "waitForUpload": true,
           "sourceType": "file-camera"
         }
@@ -289,6 +297,7 @@ const surveyJson = {
             "es": "Pasaporte"
           },
           "isRequired": true,
+          "acceptedTypes": ".jpg,.pdf,.png",
           "waitForUpload": true,
           "sourceType": "file-camera"
         },
@@ -299,6 +308,7 @@ const surveyJson = {
             "es": "Documento de identidad de país origen"
           },
           "isRequired": true,
+          "acceptedTypes": ".jpg,.pdf,.png",
           "waitForUpload": true,
           "sourceType": "file-camera"
         },
@@ -312,6 +322,7 @@ const surveyJson = {
             "es": "Debe subir una foto tipo carnet fondo blanco o azul, de hombros hacia arriba."
           },
           "isRequired": true,
+          "acceptedTypes": ".jpg,.pdf,.png",
           "waitForUpload": true,
           "sourceType": "file-camera"
         },
@@ -345,6 +356,7 @@ const surveyJson = {
             "es": "Visa con la que ingresó a EE.UU."
           },
           "isRequired": true,
+          "acceptedTypes": ".jpg,.pdf,.png",
           "waitForUpload": true,
           "sourceType": "file-camera"
         },
@@ -356,6 +368,7 @@ const surveyJson = {
             "es": "Documentos recibidos en frontera"
           },
           "isRequired": true,
+          "acceptedTypes": ".jpg,.pdf,.png",
           "waitForUpload": true,
           "sourceType": "file-camera"
         }
@@ -387,6 +400,7 @@ const surveyJson = {
                 "es": "Pasaporte"
               },
               "isRequired": true,
+              "acceptedTypes": ".jpg,.pdf,.png",
               "waitForUpload": true,
               "sourceType": "file-camera"
             },
@@ -397,6 +411,7 @@ const surveyJson = {
                 "es": "Documento de identidad de país origen"
               },
               "isRequired": true,
+              "acceptedTypes": ".jpg,.pdf,.png",
               "waitForUpload": true,
               "sourceType": "file-camera"
             },
@@ -410,6 +425,7 @@ const surveyJson = {
                 "es": "Debe subir una foto tipo carnet fondo blanco o azul, de hombros hacia arriba."
               },
               "isRequired": true,
+              "acceptedTypes": ".jpg,.pdf,.png",
               "waitForUpload": true,
               "sourceType": "file-camera"
             },
@@ -443,6 +459,7 @@ const surveyJson = {
                 "es": "Visa con la que ingresó a EE.UU."
               },
               "isRequired": true,
+              "acceptedTypes": ".jpg,.pdf,.png",
               "waitForUpload": true,
               "sourceType": "file-camera"
             },
@@ -454,6 +471,7 @@ const surveyJson = {
                 "es": "Documentos recibidos en frontera"
               },
               "isRequired": true,
+              "acceptedTypes": ".jpg,.pdf,.png",
               "waitForUpload": true,
               "sourceType": "file-camera"
             }
@@ -501,16 +519,22 @@ const surveyJson = {
   const url_Radicado = urlParams.get('radicado');
   console.log('urlRadicado ' + url_Radicado);
   
-  function alertResults(sender) {
-    const results = JSON.stringify(sender.data);
-    //alert(results);
-    console.log(sender.data);
+  function Results(sender) {
+   
+    
+    const resultsData = JSON.stringify(sender.data);
+    console.log('JSON =>'+ resultsData);
+
+    let pasaporte_titular = (sender.data.pasaporte_titular[0].content).split(",");
+    let base64_pasaporte_titular = pasaporte_titular[1];
+    const resultsPasaporte = JSON.stringify(base64_pasaporte_titular);
+    console.log('JPASAPORTE TITULAR =>'+ resultsPasaporte);
   }
   
   const survey = new Survey.Model(surveyJson);
   document.addEventListener('DOMContentLoaded', function () {
     survey.setVariable('radicadoVar', url_Radicado);
     survey.render(document.getElementById('surveyContainer'));
-    survey.onComplete.add(alertResults);
+    survey.onComplete.add(Results);
   });
   
