@@ -520,10 +520,8 @@ const surveyJson = {
   console.log('urlRadicado ' + url_Radicado);
   
   function Results(sender) {
-   
-    
-    const resultsData = JSON.stringify(sender.data);
-    console.log('JSON =>'+ resultsData);
+    //const resultsData = JSON.stringify(sender.data);
+    //console.log('JSON =>'+ resultsData);
 
     let pasaporte_titular = (sender.data.pasaporte_titular[0].content).split(",");
     let base64_pasaporte_titular = pasaporte_titular[1];
