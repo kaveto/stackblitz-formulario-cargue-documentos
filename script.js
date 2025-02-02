@@ -164,9 +164,9 @@ const surveyJson = {
       "elements": [
         {
           "type": "file",
-          "name": "pasaporte_titular",
+          "name": "identificacion_titular",
           "title": {
-            "es": "Pasaporte"
+            "es": "Documento de extranjeria"
           },
           "isRequired": true,
           "acceptedTypes": ".jpg,.pdf,.png",
@@ -175,7 +175,7 @@ const surveyJson = {
         },
         {
           "type": "file",
-          "name": "id_titular",
+          "name": "id_pais_origen_titular",
           "title": {
             "es": "Documento de identidad de país origen"
           },
@@ -293,9 +293,9 @@ const surveyJson = {
       "elements": [
         {
           "type": "file",
-          "name": "Pasaporte_conyugue",
+          "name": "identificacion_conyugue",
           "title": {
-            "es": "Pasaporte"
+            "es": "Documento de extranjeria"
           },
           "isRequired": true,
           "acceptedTypes": ".jpg,.pdf,.png",
@@ -304,7 +304,7 @@ const surveyJson = {
         },
         {
           "type": "file",
-          "name": "id_conyugue",
+          "name": "id_pais_origen_conyugue",
           "title": {
             "es": "Documento de identidad de país origen"
           },
@@ -356,7 +356,6 @@ const surveyJson = {
           "title": {
             "es": "Visa con la que ingresó a EE.UU."
           },
-          "isRequired": true,
           "acceptedTypes": ".jpg,.pdf,.png",
           "waitForUpload": true,
           "sourceType": "file-camera"
@@ -368,7 +367,6 @@ const surveyJson = {
           "title": {
             "es": "Documentos recibidos en frontera"
           },
-          "isRequired": true,
           "acceptedTypes": ".jpg,.pdf,.png",
           "waitForUpload": true,
           "sourceType": "file-camera"
@@ -396,9 +394,9 @@ const surveyJson = {
           "templateElements": [
             {
               "type": "file",
-              "name": "pasaporte_hijo",
+              "name": "identificacion_hijo",
               "title": {
-                "es": "Pasaporte"
+                "es": "Documento de extranjeria"
               },
               "isRequired": true,
               "acceptedTypes": ".jpg,.pdf,.png",
@@ -407,7 +405,7 @@ const surveyJson = {
             },
             {
               "type": "file",
-              "name": "id_hijo",
+              "name": "id_pais_origen_hijo",
               "title": {
                 "es": "Documento de identidad de país origen"
               },
@@ -459,7 +457,6 @@ const surveyJson = {
               "title": {
                 "es": "Visa con la que ingresó a EE.UU."
               },
-              "isRequired": true,
               "acceptedTypes": ".jpg,.pdf,.png",
               "waitForUpload": true,
               "sourceType": "file-camera"
@@ -471,7 +468,6 @@ const surveyJson = {
               "title": {
                 "es": "Documentos recibidos en frontera"
               },
-              "isRequired": true,
               "acceptedTypes": ".jpg,.pdf,.png",
               "waitForUpload": true,
               "sourceType": "file-camera"
@@ -524,10 +520,10 @@ const surveyJson = {
     //const resultsData = JSON.stringify(sender.data);
     //console.log('JSON =>'+ resultsData);
 
-    let pasaporte_titular = (sender.data.pasaporte_titular[0].content).split(",");
-    let base64_pasaporte_titular = pasaporte_titular[1];
-    const resultsPasaporte = JSON.stringify(base64_pasaporte_titular);
-    console.log('JPASAPORTE TITULAR =>'+ resultsPasaporte);
+    let identificacion_titular = (sender.data.identificacion_titular[0].content).split(",");
+    let base64_identificacion_titular = identificacion_titular[1];
+    const resultsIdentificacion = JSON.stringify(base64_identificacion_titular);
+    console.log('JIDENTIFICACION TITULAR =>'+ resultsIdentificacion);
   }
   
   const survey = new Survey.Model(surveyJson);
