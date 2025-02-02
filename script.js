@@ -1,7 +1,7 @@
 const surveyJson = {
   "locale": "es",
   "title": {
-    "default": "FORMULARIO DE PETICIÓN DE ASILO",
+    "default": "FORMULARIO DE ENVÍO DE DOCUMENTOS",
     "es": "FORMULARIO DE ENVÍO DE DOCUMENTOS"
   },
   "description": {
@@ -22,7 +22,7 @@ const surveyJson = {
         "es": "INFORMACIÓN GENERAL"
       },
       "navigationTitle": {
-        "es": "informacion general"
+        "es": "información general"
       },
       "elements": [
         {
@@ -33,7 +33,8 @@ const surveyJson = {
           },
           "titleLocation": "top",
           "defaultValueExpression": "{radicadoVar}",
-          "isRequired": true
+          "isRequired": true,
+          "readOnly": true
         },
         {
           "type": "html",
@@ -52,7 +53,7 @@ const surveyJson = {
         "es": "INFORMACIÓN DEL TITULAR"
       },
       "navigationTitle": {
-        "default": "1. Información Personal",
+        "default": "1. Información personal",
         "es": "Información del titular"
       },
       "elements": [
@@ -104,19 +105,19 @@ const surveyJson = {
             {
               "value": "RENOVACION PERMISO DE TRABAJO",
               "text": {
-                "es": "Renovacion permiso de trabajo"
+                "es": "Renovación permiso de trabajo"
               }
             },
             {
               "value": "PETICION FAMILIAR POR MATRIMONIO",
               "text": {
-                "es": "Peticion familiar por matrimonio"
+                "es": "Petición familiar por matrimonio"
               }
             },
             {
               "value": "PETICION FAMILIAR",
               "text": {
-                "es": "Peticion familiar"
+                "es": "Petición familiar"
               }
             }
           ]
@@ -157,7 +158,7 @@ const surveyJson = {
         "es": "DOCUMENTOS PERSONALES"
       },
       "navigationTitle": {
-        "default": "1. Información Personal",
+        "default": "1. Información personal",
         "es": "Documentos personales"
       },
       "elements": [
@@ -216,11 +217,11 @@ const surveyJson = {
     {
       "name": "Documentos adicionales",
       "title": {
-        "default": "INFORMACIÓN DEMOGRÁFICA",
+        "default": "DOCUMENTOS ADICIONALES",
         "es": "DOCUMENTOS ADICIONALES"
       },
       "navigationTitle": {
-        "default": "2. Información Demográfica",
+        "default": "2. Documentos adicionales",
         "es": "Documentos adicionales"
       },
       "elements": [
@@ -533,6 +534,10 @@ const surveyJson = {
   document.addEventListener('DOMContentLoaded', function () {
     survey.setVariable('radicadoVar', url_Radicado);
     survey.render(document.getElementById('surveyContainer'));
+    survey.onCompleting.add(function (sender, options)
+    {
+        options.allowComplete = confirm('¿Estás seguro que deseas enviar el formulario?');
+    });
     survey.onComplete.add(Results);
   });
   
